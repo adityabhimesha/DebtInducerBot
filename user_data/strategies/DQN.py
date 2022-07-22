@@ -38,7 +38,6 @@ class Agent():
         return model
 
     def reset(self):
-        self.reset_portfolio()
         self.epsilon = 1.0 # reset exploration rate
 
     def remember(self, state, actions, reward, next_state, done):
