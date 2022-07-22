@@ -1,0 +1,10 @@
+---BACKTESTING---
+docker-compose run --rm freqtrade backtesting --strategy DeepQStrategy --timeframe 1m --dry-run-wallet 1000 --timerange=20220622-20220623 --export none
+
+
+---DOWNLOAD DATA---
+docker-compose run --rm freqtrade download-data --exchange binance --pairs BTC/USDT
+
+
+---TRADE---
+docker-compose run --rm trade --logfile /freqtrade/user_data/logs/freqtrade.log --db-url sqlite:////freqtrade/user_data/tradesv3.sqlite --config /freqtrade/user_data/config.json --strategy DeepQStrategy

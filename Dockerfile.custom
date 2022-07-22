@@ -1,0 +1,21 @@
+FROM freqtradeorg/freqtrade:stable
+
+# Switch user to root if you must install something from apt
+# Don't forget to switch the user back below!
+# USER root
+
+# The below dependency - pyti - serves as an example. Please use whatever you need!
+
+
+# COPY requirements.txt /user_data/
+# RUN pip install -r requirements.txt --user --no-cache-dir > output.txt
+# RUN pip freeze
+
+RUN pip install tensorflow
+RUN pip install keras 
+COPY DQN_ep10.h5 /freqtrade/
+COPY /user_data/strategies/utils.py /freqtrade/user_data/strategies/
+COPY /user_data/strategies/DQN.py /freqtrade/user_data/strategies/
+
+# Switch back to user (only if you required root above)
+# USER ftuser
